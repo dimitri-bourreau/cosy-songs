@@ -105,7 +105,7 @@ const getPlaylists = (episodes: Episode[]): Playlist[] => {
     .map(({numberOfSongs}) => numberOfSongs)
     .reduce((a, b) => a + b)
   const cosyData: CosyData = {
-    numberOfEpisodes: episodes.length, // 176,
+    numberOfEpisodes: episodes.length,
     numberOfSongs,
     playlists
   }
