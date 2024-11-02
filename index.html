@@ -24,13 +24,13 @@
 					episodeLink.className = 'text-[#ff1a2f] underline'
 					episodeLink.href = playlist.episodeLink;
 					episodeLink.textContent = `${playlist.episodeTitle}`;
-					episodeTitle.className = 'px-3 py-4 text-sm text-gray-500';
+					episodeTitle.className = 'py-4 text-sm text-gray-500';
 					episodeTitle.appendChild(episodeLink);
 					playlistTr.className = "flex flex-col sm-:flex-row"
 					playlistTr.appendChild(episodeTitle);
 
 					const songs = document.createElement('td');
-					songs.className = 'relative py-4 pr-3 text-sm font-medium text-gray-900'
+					songs.className = 'relative py-4 text-sm font-medium text-gray-900'
 					const songsList = document.createElement('ul');
 					for (song of playlist.songs) {
 						const {title, artist} = song;
@@ -97,8 +97,8 @@
     </script>
 </head>
 
-<body class="flex flex-col gap-4 items-center p-10">
-<div class="flex justify-center items-center flex-col">
+<body class="flex flex-col gap-4 items-center w-full">
+<div class="flex justify-center items-center flex-col py-10">
     <h1 class="text-3xl text-[#ff1a2f] font-bold">Cosy Songs</h1>
     <p class="text-sm"><span id="playlists-number"></span> épisodes - <span id="songs-number"></span> musiques</p>
     <a href="https://www.youtube.com/playlist?list=PL91AuLITLu4Q_7r7LA9-LwhUIYP64eEZq"
@@ -112,30 +112,22 @@
 </div>
 
 
-<div class="px-4 sm:px-6 lg:px-8">
-    <div class="mt-8 flow-root">
-        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                <table class="w-full px-10 text-left">
-                    <thead>
-                    <tr>
-                        <th scope="col"
-                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                            Épisodes
-                        </th>
-                        <th scope="col"
-                            class="hidden relative isolate py-3.5 pr-3 text-left text-sm font-semibold text-gray-900">
-                            Musiques
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody id="table" class="divide-y divide-gray-200">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+<table class="m-10 mt-0">
+    <thead>
+    <tr>
+        <th scope="col"
+            class="hidden text-left text-sm font-semibold text-gray-900">
+            Épisodes
+        </th>
+        <th scope="col"
+            class="hidden relative isolate text-left text-sm font-semibold text-gray-900">
+            Musiques
+        </th>
+    </tr>
+    </thead>
+    <tbody id="table" class="divide-y divide-gray-200">
+    </tbody>
+</table>
 
 </body>
 </html>
