@@ -13,4 +13,7 @@ deno --allow-net --allow-write fetch-playlists.fr
 # Pour ne pas être embêté par cors, je recommande :
 npm i -g http-server
 http-server
+
+# Tester
+deno test --allow-read
 ```
