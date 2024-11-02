@@ -2,7 +2,7 @@
 
 Écoutez les musique cosy du Cosy Corner. 🎵
 
-[cosy-songs.fr](https://cosy-songs.fr)
+[cosysongs.fr](https://cosysongs.fr)
 
 ## Exécuter localement
 
