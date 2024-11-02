@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Cosy Songs</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
 			(async () => {
@@ -22,10 +24,13 @@
 					episodeLink.className = 'text-[#ff1a2f] underline'
 					episodeLink.href = playlist.episodeLink;
 					episodeLink.textContent = `${playlist.episodeTitle}`;
+					episodeTitle.className = 'px-3 py-4 text-sm text-gray-500';
 					episodeTitle.appendChild(episodeLink);
+					playlistTr.className = "flex flex-col sm-:flex-row"
 					playlistTr.appendChild(episodeTitle);
 
 					const songs = document.createElement('td');
+					songs.className = 'relative py-4 pr-3 text-sm font-medium text-gray-900'
 					const songsList = document.createElement('ul');
 					for (song of playlist.songs) {
 						const {title, artist} = song;
@@ -92,13 +97,16 @@
     </script>
 </head>
 
-<body class="flex flex-col gap-4 items-center py-10">
+<body class="flex flex-col gap-4 items-center p-10">
 <div class="flex justify-center items-center flex-col">
     <h1 class="text-3xl text-[#ff1a2f] font-bold">Cosy Songs</h1>
     <p class="text-sm"><span id="playlists-number"></span> épisodes - <span id="songs-number"></span> musiques</p>
-    <a href="https://www.youtube.com/playlist?list=PL91AuLITLu4Q_7r7LA9-LwhUIYP64eEZq" class="text-[#ff1a2f] underline mt-4">
+    <a href="https://www.youtube.com/playlist?list=PL91AuLITLu4Q_7r7LA9-LwhUIYP64eEZq"
+       class="text-[#ff1a2f] underline mt-4">
         Playlist YouTube des musiques
-        <img class="w-5 h-5 inline rounded-sm" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvectorified.com%2Fimage%2Fyoutube-logo-vector-12.png&f=1&nofb=1&ipt=b0e1f9e73a5c0770afb5b41de55e4f9435de02a0bc692f57a24770b069b48697&ipo=images" alt="YouTube" />
+        <img class="w-5 h-5 inline rounded-sm"
+             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvectorified.com%2Fimage%2Fyoutube-logo-vector-12.png&f=1&nofb=1&ipt=b0e1f9e73a5c0770afb5b41de55e4f9435de02a0bc692f57a24770b069b48697&ipo=images"
+             alt="YouTube"/>
     </a>
     <p class="text-xs">(épisodes 1 à 4, en cours)</p>
 </div>
@@ -108,13 +116,15 @@
     <div class="mt-8 flow-root">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                <table class="min-w-full divide-y divide-gray-300">
+                <table class="w-full text-left">
                     <thead>
                     <tr>
-                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+                        <th scope="col"
+                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                             Épisodes
                         </th>
-                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+                        <th scope="col"
+                            class="hidden relative isolate py-3.5 pr-3 text-left text-sm font-semibold text-gray-900">
                             Musiques
                         </th>
                     </tr>
