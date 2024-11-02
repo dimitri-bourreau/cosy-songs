@@ -5,7 +5,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
 			(async () => {
-				const jsonFile = await fetch('./playlists.json');
+				const jsonFile = await fetch('./json-data/playlists.json');
 				const {numberOfEpisodes, numberOfSongs, playlists} = await jsonFile.json();
 
 				const songsNumber = document.getElementById('songs-number');
