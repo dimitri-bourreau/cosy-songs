@@ -1,0 +1,91 @@
+{
+  guid: {
+    "#text": "tag:soundcloud,2010:tracks/1945050359",
+    "@isPermaLink": "false"
+  },
+  title: "#151 - Jesus et coutumes",
+  pubDate: "Tue, 29 Oct 2024 22:59:06 +0000",
+  link: "https://soundcloud.com/lecosycorner/151-jesus-et-coutumes",
+  "itunes:duration": "02:29:21",
+  "itunes:author": "Le Cosy Corner",
+  "itunes:explicit": "no",
+  "itunes:summary": "Où il est entre autre question de :\n"
+  +
+  "[00:00:00] Tristesse\n"
+  +
+  "[00:27:42] La semaine de la honte\n"
+  +
+  "[01:06:58] Ys X (comme ça se prononce)\n"
+  +
+  "[01:39:28] Slow Horses\n"
+  +
+  "[01:55:48] Le cylce de la Tour de Garde\n"
+  +
+  "\n"
+  +
+  "La page Patreon du Cosy Corner : https://www.patreon.com/lecosycorner\n"
+  +
+  "\n"
+  +
+  "-- Playlist -- \n"
+  +
+  "\n"
+  +
+  "- Fontaines D.C. - Starburster\n"
+  +
+  "- Kensuke Ushio - Te no Hira wo Taiyou ni\n"
+  +
+  "- Nirvana - All Apologies\n"
+  +
+  "- Magneto - Vuela, Vuela\n"
+  +
+  "- French 79 -- Gnossienne n° 5\n"
+  +
+  "- Sevdaliza - Hubris\n"
+  +
+  "- ALB - Non je voulais juste écouter Robert Miles (Cosy Corner 151 special thanks)",
+  "itunes:subtitle": "Où il est entre autre question de :\n[00:00:00] Tr…",
+  description: "Où il est entre autre question de :\n"
+  +
+  "[00:00:00] Tristesse\n"
+  +
+  "[00:27:42] La semaine de la honte\n"
+  +
+  "[01:06:58] Ys X (comme ça se prononce)\n"
+  +
+  "[01:39:28] Slow Horses\n"
+  +
+  "[01:55:48] Le cylce de la Tour de Garde\n"
+  +
+  "\n"
+  +
+  "La page Patreon du Cosy Corner : https://www.patreon.com/lecosycorner\n"
+  +
+  "\n"
+  +
+  "-- Playlist -- \n"
+  +
+  "\n"
+  +
+  "- Fontaines D.C. - Starburster\n"
+  +
+  "- Kensuke Ushio - Te no Hira wo Taiyou ni\n"
+  +
+  "- Nirvana - All Apologies\n"
+  +
+  "- Magneto - Vuela, Vuela\n"
+  +
+  "- French 79 -- Gnossienne n° 5\n"
+  +
+  "- Sevdaliza - Hubris\n"
+  +
+  "- ALB - Non je voulais juste écouter Robert Miles (Cosy Corner 151 special thanks)",
+  enclosure: {
+    "@type": "audio/mpeg",
+    "@url": "https://feeds.soundcloud.com/stream/1945050359-lecosycorner-151-jesus-et-coutumes.mp3",
+    "@length": "215237206"
+  },
+  "itunes:image": {
+    "@href": "https://i1.sndcdn.com/artworks-B4bvx3x1QDPHkBRe-OfupMg-t3000x3000.jpg"
+  }
+}
