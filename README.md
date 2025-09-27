@@ -2,8 +2,6 @@
 
 Écoutez les musique cosy du Cosy Corner. 🎵
 
-[cosysongs.fr](https://cosysongs.fr)
-
 ## Exécuter localement
 
 ```bash
