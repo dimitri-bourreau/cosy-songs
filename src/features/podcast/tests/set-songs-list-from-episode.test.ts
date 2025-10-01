@@ -19,4 +19,9 @@ describe("[SONG] Set songs list from episode", () => {
     const { songsList } = setSongsListFromEpisode(mockPodcastEpisodes[0]);
     expect(songsList[1].title).toBe("All Apologies");
   });
+
+  it("should find 5 songs", () => {
+    const { songsList } = setSongsListFromEpisode(mockPodcastEpisodes[0]);
+    expect(songsList.length).toBe(5);
+  });
 });
