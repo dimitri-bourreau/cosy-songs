@@ -1,6 +1,6 @@
-import { PodcastEpisode } from "@/features/podcast/types/podcast-episode.type";
+import { RawPodcastEpisode } from "@/features/podcast/types/raw-podcast-episode.type";
 
-export const mockPodcastEpisodes: PodcastEpisode[] = [
+export const mockPodcastEpisodes: RawPodcastEpisode[] = [
   {
     guid: {
       "#text": "tag:soundcloud,2010:tracks/1945050359",
