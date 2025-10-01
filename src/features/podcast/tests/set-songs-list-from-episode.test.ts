@@ -14,4 +14,9 @@ describe("[SONG] Set songs list from episode", () => {
     const { songsList } = setSongsListFromEpisode(mockPodcastEpisodes[0]);
     expect(songsList[0].title).toBe("Te no Hira wo Taiyou ni");
   });
+
+  it('should find the song "All Apologies"', () => {
+    const { songsList } = setSongsListFromEpisode(mockPodcastEpisodes[0]);
+    expect(songsList[1].title).toBe("All Apologies");
+  });
 });
