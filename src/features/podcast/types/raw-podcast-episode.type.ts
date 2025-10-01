@@ -1,4 +1,4 @@
-export interface PodcastEpisode {
+export interface RawPodcastEpisode {
   guid: {
     "#text": string;
     "@isPermaLink": string;
