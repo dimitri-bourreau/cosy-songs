@@ -9,4 +9,9 @@ describe("[SONG] Set songs list from episode", () => {
     );
     expect(episodesWithSongsList.songsList).toBeTruthy();
   });
+
+  it('should find the song "Te no Hira wo Taiyou ni"', () => {
+    const { songsList } = setSongsListFromEpisode(mockPodcastEpisodes[0]);
+    expect(songsList[0].title).toBe("Te no Hira wo Taiyou ni");
+  });
 });
