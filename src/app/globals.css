@@ -6,17 +6,49 @@
 }
 
 @theme inline {
+  --font-workbench: "work-bench", sans-serif;
+  --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --background: #aa111d;
     --foreground: #ffcccc;
   }
+}
+
+@font-face {
+  font-family: "work-sans";
+  src: url("/fonts/work-sans/WorkSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "work-sans";
+  src: url("/fonts/work-sans/WorkSans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "work-bench";
+  src: url("/fonts/workbench/workbench.ttf") format("truetype-variations");
+  font-style: normal;
+  font-display: swap;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "work-sans", Arial, Helvetica, sans-serif;
+}
+
+@keyframes move-background {
+  to {
+    background-position: 30vh;
+  }
 }

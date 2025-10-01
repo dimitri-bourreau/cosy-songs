@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import "./globals.css";
-import CosyLogo from "./cosy-corner-logo.jpg";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,15 +13,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className="flex justify-center p-5">
-        <Image
-          src={CosyLogo}
-          className="-mt-20"
-          alt="Cosy Songs Logo"
-          width={400}
-          height={400}
-          priority={true}
-        />
+      <body className="flex justify-center px-5 py-10">
+        <h1
+          className="uppercase text-6xl font-workbench"
+          style={{
+            transform: "skew(-0.03turn, -3deg)",
+            backgroundImage:
+              "linear-gradient(to right, #ffffff, #fd9c9c, #ffffff)",
+            backgroundClip: "text",
+            color: "transparent",
+            animation: "move-background 180s linear infinite",
+          }}
+        >
+          Cosy songs
+        </h1>
         {children}
       </body>
     </html>
