@@ -1,5 +1,5 @@
-import { PodcastEpisode } from "@/features/podcast/types/podcast-episode.type";
+import { RawPodcastEpisode } from "@/features/podcast/types/raw-podcast-episode.type";
 
 export interface PodcastPort {
-  getPodcastEpisodes(): Promise<PodcastEpisode[]>;
+  getPodcastEpisodes(): Promise<RawPodcastEpisode[]>;
 }

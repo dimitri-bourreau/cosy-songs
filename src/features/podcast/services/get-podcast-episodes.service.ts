@@ -1,8 +1,8 @@
 import { PodcastPort } from "@/features/podcast/adapters/podcast.port";
-import { PodcastEpisode } from "@/features/podcast/types/podcast-episode.type";
+import { RawPodcastEpisode } from "../types/raw-podcast-episode.type";
 
 export const getPodcastEpisodes = (
   adapter: PodcastPort,
-): Promise<PodcastEpisode[]> => {
+): Promise<RawPodcastEpisode[]> => {
   return adapter.getPodcastEpisodes();
 };
