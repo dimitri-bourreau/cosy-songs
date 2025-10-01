@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import CosyLogo from "./cosy-corner-logo.jpg";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,16 +15,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex justify-center p-5`}
-        style={{ background: "#ff1a30" }}
-      >
+      <body className="flex justify-center p-5">
         <Image
           src={CosyLogo}
           className="-mt-20"
           alt="Cosy Songs Logo"
           width={400}
           height={400}
+          priority={true}
         />
         {children}
       </body>
