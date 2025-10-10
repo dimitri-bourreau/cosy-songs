@@ -49,6 +49,6 @@ body {
 
 @keyframes move-background {
   to {
-    background-position: 30vh;
+    background-position: 360px;
   }
 }

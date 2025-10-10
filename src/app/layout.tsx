@@ -13,16 +13,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className="flex justify-center px-5 py-10">
+      <body className="flex justify-center items-center flex-col px-5 py-10">
         <h1
-          className="uppercase text-6xl font-workbench"
+          className="uppercase text-7xl font-workbench mb-10"
           style={{
             transform: "skew(-0.03turn, -3deg)",
             backgroundImage:
               "linear-gradient(to right, #ffffff, #fd9c9c, #ffffff)",
             backgroundClip: "text",
             color: "transparent",
-            animation: "move-background 180s linear infinite",
+            animation: "move-background 4s linear infinite",
           }}
         >
           Cosy songs
