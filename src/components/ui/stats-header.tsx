@@ -9,7 +9,7 @@ export function StatsHeader({
   numberOfEpisodes,
   numberOfSongs,
 }: StatsHeaderProps) {
-  const devMode = process.env.NEXT_PUBLIC_DEV;
+  const devMode = process.env.NEXT_PUBLIC_DEV === "1";
 
   return (
     <header className="w-full bg-cosy-red px-4 py-16 text-center text-white">
@@ -19,13 +19,13 @@ export function StatsHeader({
       </p>
       <Link
         href={
-          devMode === "1"
+          devMode
             ? "/playlist-builder"
             : "https://github.com/dimitri-bourreau/cosy-songs"
         }
         className="mt-6 inline-block rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-cosy-red transition hover:bg-cosy-light"
       >
-        {devMode === "1"
+        {devMode
           ? "Créer une playlist"
           : "Développeur ? Vous pouvez créer des playlist YouTube"}
       </Link>
