@@ -29,10 +29,10 @@ const SERVICE_CONFIG: Record<
 };
 
 const SERVICE_STYLES: Record<Service, string> = {
-  youtube: "bg-red-50 text-red-600 hover:bg-red-100",
-  spotify: "bg-green-50 text-green-600 hover:bg-green-100",
-  "apple-music": "bg-pink-50 text-pink-600 hover:bg-pink-100",
-  deezer: "bg-purple-50 text-purple-600 hover:bg-purple-100",
+  youtube: "border-red-300 text-red-500 hover:bg-red-50",
+  spotify: "border-green-300 text-green-600 hover:bg-green-50",
+  "apple-music": "border-pink-300 text-pink-500 hover:bg-pink-50",
+  deezer: "border-purple-300 text-purple-500 hover:bg-purple-50",
 };
 
 export function ServiceLink({ service, artist, title }: ServiceLinkProps) {
@@ -44,7 +44,7 @@ export function ServiceLink({ service, artist, title }: ServiceLinkProps) {
       href={config.buildUrl(query)}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold transition ${SERVICE_STYLES[service]}`}
+      className={`inline-flex h-5 items-center justify-center border px-1.5 text-[9px] font-bold uppercase transition ${SERVICE_STYLES[service]}`}
     >
       {config.label}
     </a>

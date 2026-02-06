@@ -6,14 +6,14 @@ export function DedupToggle() {
   const { state, dispatch } = usePlaylistBuilder();
 
   return (
-    <label className="flex items-center gap-2 text-sm">
+    <label className="flex cursor-pointer items-center gap-2 text-sm font-medium text-gray-600">
       <input
         type="checkbox"
         checked={state.deduplicate}
         onChange={() => dispatch({ type: "TOGGLE_DEDUP" })}
         className="accent-cosy-red"
       />
-      Supprimer les doublons
+      Remove duplicates
     </label>
   );
 }

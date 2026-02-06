@@ -12,19 +12,23 @@ export function StatsHeader({
   const devMode = process.env.NEXT_PUBLIC_DEV === "1";
 
   return (
-    <header className="w-full bg-cosy-red px-4 py-16 text-center text-white">
-      <h1 className="text-5xl font-extrabold tracking-tight">Cosy Songs</h1>
-      <p className="mt-3 text-lg font-medium opacity-90">
-        {numberOfEpisodes} épisodes &middot; {numberOfSongs} musiques
-      </p>
-      {devMode && (
-        <Link
-          href="/playlist-builder"
-          className="mt-6 inline-block rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-cosy-red transition hover:bg-cosy-light"
-        >
-          Créer une playlist
-        </Link>
-      )}
+    <header className="grain-bg border-b-4 border-cosy-dark bg-cosy-red px-6 py-20">
+      <div className="relative z-10 mx-auto max-w-5xl">
+        <h1 className="text-7xl font-black tracking-tighter text-white uppercase md:text-8xl">
+          COSY SONGS
+        </h1>
+        <p className="mt-4 text-lg font-medium tracking-wide text-white/70 uppercase">
+          {numberOfEpisodes} episodes &middot; {numberOfSongs} songs
+        </p>
+        {devMode && (
+          <Link
+            href="/playlist-builder"
+            className="mt-8 inline-block border-2 border-white px-6 py-3 text-sm font-bold tracking-wide text-white uppercase transition hover:bg-white hover:text-cosy-red"
+          >
+            Build a playlist
+          </Link>
+        )}
+      </div>
     </header>
   );
 }

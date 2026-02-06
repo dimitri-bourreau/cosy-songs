@@ -11,7 +11,7 @@ export default async function Home() {
   const cosyData = createCosyData(episodes);
 
   return (
-    <main className="min-h-screen bg-cosy-red/90">
+    <main className="min-h-screen bg-cosy-cream">
       <StatsHeader
         numberOfEpisodes={cosyData.numberOfEpisodes}
         numberOfSongs={cosyData.numberOfSongs}

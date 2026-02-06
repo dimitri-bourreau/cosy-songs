@@ -15,9 +15,11 @@ export function SongCatalog({ playlists }: SongCatalogProps) {
   const filtered = filterPlaylists(playlists, search);
 
   return (
-    <div className="flex w-full flex-col items-center gap-6 px-4 py-10">
-      <SearchInput value={search} onChange={setSearch} />
-      <div className="flex w-full max-w-3xl flex-col gap-3">
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-0 px-6 py-12">
+      <div className="mb-8 flex justify-center">
+        <SearchInput value={search} onChange={setSearch} />
+      </div>
+      <div className="flex flex-col">
         {filtered.map((playlist) => (
           <EpisodeCard key={playlist.episodeLink} playlist={playlist} />
         ))}

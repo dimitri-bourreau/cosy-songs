@@ -16,18 +16,20 @@ export function SongPicker({ playlists }: SongPickerProps) {
   const filtered = filterBySearch(playlists, search);
 
   return (
-    <div className="rounded-xl bg-white p-5 shadow-sm ring-1 ring-gray-100">
-      <input
-        type="text"
-        placeholder="Rechercher..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        className="mb-3 w-full rounded-full border-0 bg-gray-50 px-4 py-2 text-sm ring-1 ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-cosy-red focus:outline-none"
-      />
-      <div className="max-h-80 overflow-y-auto">
+    <div className="border-2 border-cosy-border bg-white">
+      <div className="border-b-2 border-cosy-border px-5 py-4">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full border-2 border-cosy-border bg-cosy-cream px-4 py-2.5 text-base placeholder:text-gray-400 focus:border-cosy-red focus:outline-none"
+        />
+      </div>
+      <div className="custom-scrollbar max-h-96 overflow-y-auto">
         {filtered.map((playlist) => (
-          <div key={playlist.episodeLink} className="mb-4">
-            <p className="mb-1 text-xs font-bold tracking-wide text-gray-400 uppercase">
+          <div key={playlist.episodeLink}>
+            <p className="border-b border-cosy-border/50 bg-cosy-cream/50 px-5 py-2 text-xs font-bold tracking-wide text-gray-400 uppercase">
               {playlist.episodeTitle}
             </p>
             <ul>
@@ -48,17 +50,17 @@ export function SongPicker({ playlists }: SongPickerProps) {
 
 function SongPickerRow({ song, onAdd }: { song: Song; onAdd: () => void }) {
   return (
-    <li className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm transition hover:bg-gray-50">
+    <li className="flex items-center gap-3 border-b border-cosy-border/30 px-5 py-2.5 text-base transition hover:bg-cosy-cream/50">
       <button
         onClick={onAdd}
-        className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cosy-light text-xs font-bold text-cosy-red transition hover:bg-cosy-red hover:text-white"
+        className="flex h-6 w-6 shrink-0 cursor-pointer items-center justify-center border border-cosy-red text-xs font-bold text-cosy-red transition hover:bg-cosy-red hover:text-white"
       >
         +
       </button>
       <span className="min-w-0 truncate">
-        <span className="font-semibold text-gray-900">{song.artist}</span>
-        <span className="text-gray-400"> &mdash; </span>
-        <span className="text-gray-600">{song.title}</span>
+        <span className="font-bold text-gray-900">{song.artist}</span>
+        <span className="text-gray-300"> &mdash; </span>
+        <span className="text-gray-500">{song.title}</span>
       </span>
     </li>
   );

@@ -13,49 +13,50 @@ export default async function PlaylistBuilderPage() {
 
   if (!devMode)
     return (
-      <main className="min-h-screen bg-cosy-red">
-        <header className="w-full px-4 py-12 text-center text-white">
-          <h1 className="text-4xl font-extrabold tracking-tight">
-            Cette page est accessible en mode développeur
+      <main className="grain-bg min-h-screen bg-cosy-red">
+        <div className="relative z-10 mx-auto max-w-3xl px-6 py-20">
+          <h1 className="text-5xl font-black tracking-tighter text-white uppercase">
+            Developer mode only
           </h1>
-          <Link
-            href="/"
-            className="mt-3 inline-block text-sm font-medium text-white/80 underline transition hover:text-white"
-          >
-            Retour au catalogue
-          </Link>
-        </header>
-        <div className="px-4 py-10 flex flex-col gap-4 items-center">
-          <p className="text-white">
-            Entant que développeur vous pouvez, avec l&apos;API YouTube, créer
-            des playlist automatiquement. Toutes les instructions sont sur le
-            GitHub de ce projet.
+          <p className="mt-6 text-lg text-white/70">
+            As a developer you can use the YouTube, Spotify and Deezer APIs to
+            create playlists automatically. All instructions are on the project
+            GitHub.
           </p>
-
-          <Link
-            href="https://github.com/dimitri-bourreau/cosy-songs"
-            className="mt-3 inline-block text-sm font-medium text-white/80 underline transition hover:text-white"
-          >
-            GitHub
-          </Link>
+          <div className="mt-8 flex gap-4">
+            <Link
+              href="/"
+              className="border-2 border-white px-5 py-2.5 text-sm font-bold tracking-wide text-white uppercase transition hover:bg-white hover:text-cosy-red"
+            >
+              Back to catalog
+            </Link>
+            <Link
+              href="https://github.com/dimitri-bourreau/cosy-songs"
+              className="border-2 border-white/50 px-5 py-2.5 text-sm font-bold tracking-wide text-white/70 uppercase transition hover:border-white hover:text-white"
+            >
+              GitHub
+            </Link>
+          </div>
         </div>
       </main>
     );
 
   return (
-    <main className="min-h-screen bg-cosy-red/70">
-      <header className="w-full bg-cosy-red px-4 py-12 text-center text-white">
-        <h1 className="text-4xl font-extrabold tracking-tight">
-          Créer une playlist
-        </h1>
-        <Link
-          href="/"
-          className="mt-3 inline-block text-sm font-medium text-white/80 underline transition hover:text-white"
-        >
-          Retour au catalogue
-        </Link>
+    <main className="min-h-screen bg-cosy-cream">
+      <header className="grain-bg border-b-4 border-cosy-dark bg-cosy-red px-6 py-16">
+        <div className="relative z-10 mx-auto max-w-5xl">
+          <Link
+            href="/"
+            className="text-sm font-bold tracking-wide text-white/60 uppercase transition hover:text-white"
+          >
+            &larr; Back to catalog
+          </Link>
+          <h1 className="mt-4 text-5xl font-black tracking-tighter text-white uppercase md:text-6xl">
+            Build a playlist
+          </h1>
+        </div>
       </header>
-      <div className="px-4 py-10">
+      <div className="px-6 py-10">
         <PlaylistBuilderClient playlists={cosyData.playlists} />
       </div>
     </main>

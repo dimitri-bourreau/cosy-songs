@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { exchangeCodeForTokens } from "@/features/youtube/auth";
+import { exchangeSpotifyCode } from "@/features/spotify/auth";
 
 export async function GET(request: NextRequest) {
   const code = request.nextUrl.searchParams.get("code");
@@ -8,13 +8,13 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const tokens = await exchangeCodeForTokens(code);
+    const tokens = await exchangeSpotifyCode(code);
 
     const response = NextResponse.redirect(
       new URL("/playlist-builder", request.url),
     );
 
-    response.cookies.set("yt_access_token", tokens.access_token, {
+    response.cookies.set("sp_access_token", tokens.access_token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
     });
 
     if (tokens.refresh_token) {
-      response.cookies.set("yt_refresh_token", tokens.refresh_token, {
+      response.cookies.set("sp_refresh_token", tokens.refresh_token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "lax",
@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
 
     return response;
   } catch (error) {
-    console.error("[YouTube Callback]", error);
+    console.error("[Spotify Callback]", error);
     return NextResponse.redirect(
       new URL("/playlist-builder?error=auth_failed", request.url),
     );

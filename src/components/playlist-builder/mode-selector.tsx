@@ -6,26 +6,26 @@ export function ModeSelector() {
   const { state, dispatch } = usePlaylistBuilder();
 
   return (
-    <div className="flex gap-2">
+    <div className="flex">
       <button
         onClick={() => dispatch({ type: "SET_MODE", payload: "auto" })}
-        className={`rounded-full px-5 py-2 text-sm font-semibold transition ${
+        className={`cursor-pointer border-2 px-5 py-2.5 text-sm font-bold uppercase tracking-wide transition ${
           state.mode === "auto"
-            ? "bg-cosy-red text-white shadow-sm"
-            : "bg-white text-gray-600 ring-1 ring-gray-200 hover:bg-gray-50"
+            ? "border-cosy-red bg-cosy-red text-white"
+            : "border-cosy-border bg-white text-gray-500 hover:border-gray-400"
         }`}
       >
-        Playlist automatique
+        Automatic
       </button>
       <button
         onClick={() => dispatch({ type: "SET_MODE", payload: "manual" })}
-        className={`rounded-full px-5 py-2 text-sm font-semibold transition ${
+        className={`cursor-pointer border-2 border-l-0 px-5 py-2.5 text-sm font-bold uppercase tracking-wide transition ${
           state.mode === "manual"
-            ? "bg-cosy-red text-white shadow-sm"
-            : "bg-white text-gray-600 ring-1 ring-gray-200 hover:bg-gray-50"
+            ? "border-cosy-red bg-cosy-red text-white"
+            : "border-cosy-border bg-white text-gray-500 hover:border-gray-400"
         }`}
       >
-        Sélection manuelle
+        Manual
       </button>
     </div>
   );

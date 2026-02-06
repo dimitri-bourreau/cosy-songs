@@ -18,34 +18,52 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
 
-  const body: CreatePlaylistBody = await request.json();
-  const cache = await readCache();
-  const playlistId = await createYouTubePlaylist(body.name, accessToken);
-  let cacheUpdated = false;
+  try {
+    const body: CreatePlaylistBody = await request.json();
+    const cache = await readCache();
 
-  for (const song of body.songs) {
-    const key = buildCacheKey(song.artist, song.title);
-    let videoId: string | null = cache[key] ?? null;
+    console.log(`[YouTube] Creating playlist "${body.name}" with ${body.songs.length} songs`);
 
-    if (!videoId) {
-      videoId = await searchYouTubeVideo(
-        `${song.artist} ${song.title}`,
-        accessToken,
-      );
+    const playlistId = await createYouTubePlaylist(body.name, accessToken);
+    console.log(`[YouTube] Playlist created: ${playlistId}`);
+
+    let cacheUpdated = false;
+    let added = 0;
+
+    for (const song of body.songs) {
+      const key = buildCacheKey(song.artist, song.title);
+      let videoId: string | null = cache[key] ?? null;
+
+      if (!videoId) {
+        videoId = await searchYouTubeVideo(
+          `${song.artist} ${song.title}`,
+          accessToken,
+        );
+        if (videoId) {
+          cache[key] = videoId;
+          cacheUpdated = true;
+        }
+      }
+
       if (videoId) {
-        cache[key] = videoId;
-        cacheUpdated = true;
+        await addVideoToPlaylist(playlistId, videoId, accessToken);
+        added++;
       }
     }
 
-    if (videoId) {
-      await addVideoToPlaylist(playlistId, videoId, accessToken);
-    }
+    if (cacheUpdated) await writeCache(cache);
+    console.log(`[YouTube] Done: ${added}/${body.songs.length} songs added`);
+
+    return NextResponse.json({
+      url: `https://www.youtube.com/playlist?list=${playlistId}`,
+      added,
+      total: body.songs.length,
+    });
+  } catch (error) {
+    console.error("[YouTube] Export failed:", error);
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Export failed" },
+      { status: 500 },
+    );
   }
-
-  if (cacheUpdated) await writeCache(cache);
-
-  return NextResponse.json({
-    url: `https://www.youtube.com/playlist?list=${playlistId}`,
-  });
 }

@@ -25,8 +25,8 @@ function PlaylistBuilderInner({ playlists }: Props) {
   const { state } = usePlaylistBuilder();
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-6">
-      <div className="flex items-center gap-4">
+    <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-8">
+      <div className="flex flex-wrap items-center justify-center gap-4">
         <ModeSelector />
         <DedupToggle />
       </div>

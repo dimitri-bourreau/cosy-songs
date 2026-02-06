@@ -14,6 +14,12 @@ export async function searchYouTubeVideo(
     headers: { Authorization: `Bearer ${accessToken}` },
   });
   const data = await res.json();
+
+  if (!res.ok) {
+    console.error("[YouTube] Search failed:", data.error?.message);
+    return null;
+  }
+
   return data.items?.[0]?.id?.videoId ?? null;
 }
 
@@ -33,6 +39,12 @@ export async function createYouTubePlaylist(
     }),
   });
   const data = await res.json();
+
+  if (!res.ok) {
+    console.error("[YouTube] Playlist creation failed:", data.error?.message);
+    throw new Error(data.error?.message ?? "Playlist creation failed");
+  }
+
   return data.id;
 }
 
@@ -41,7 +53,7 @@ export async function addVideoToPlaylist(
   videoId: string,
   accessToken: string,
 ): Promise<void> {
-  await fetch(`${API_BASE}/playlistItems?part=snippet`, {
+  const res = await fetch(`${API_BASE}/playlistItems?part=snippet`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -54,4 +66,9 @@ export async function addVideoToPlaylist(
       },
     }),
   });
+
+  if (!res.ok) {
+    const data = await res.json();
+    console.error("[YouTube] Add video failed:", data.error?.message);
+  }
 }

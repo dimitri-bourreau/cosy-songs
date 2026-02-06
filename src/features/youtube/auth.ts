@@ -30,5 +30,13 @@ export async function exchangeCodeForTokens(
       grant_type: "authorization_code",
     }),
   });
-  return res.json();
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    console.error("[YouTube Auth] Token exchange failed:", data);
+    throw new Error(data.error_description ?? "Token exchange failed");
+  }
+
+  return data;
 }
