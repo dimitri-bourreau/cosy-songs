@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cosy-red: #ff1a2f;
+  --color-cosy-dark: #e0162b;
+  --color-cosy-light: #fff0f1;
+}
+
+body {
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  background: #fafafa;
+}
