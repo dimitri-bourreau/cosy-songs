@@ -17,18 +17,14 @@ export function StatsHeader({
       <p className="mt-3 text-lg font-medium opacity-90">
         {numberOfEpisodes} épisodes &middot; {numberOfSongs} musiques
       </p>
-      <Link
-        href={
-          devMode
-            ? "/playlist-builder"
-            : "https://github.com/dimitri-bourreau/cosy-songs"
-        }
-        className="mt-6 inline-block rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-cosy-red transition hover:bg-cosy-light"
-      >
-        {devMode
-          ? "Créer une playlist"
-          : "Développeur ? Vous pouvez créer des playlist YouTube"}
-      </Link>
+      {devMode && (
+        <Link
+          href="/playlist-builder"
+          className="mt-6 inline-block rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-cosy-red transition hover:bg-cosy-light"
+        >
+          Créer une playlist
+        </Link>
+      )}
     </header>
   );
 }
