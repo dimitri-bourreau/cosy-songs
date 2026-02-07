@@ -5,6 +5,19 @@ interface StatsHeaderProps {
   numberOfSongs: number;
 }
 
+const PODCAST_LINKS = [
+  {
+    label: "Spotify",
+    href: "https://open.spotify.com/show/3WRu0whFXjZoxr8jyy03UN",
+  },
+  {
+    label: "Apple Podcasts",
+    href: "https://podcasts.apple.com/fr/podcast/le-cosy-corner/id1186841043",
+  },
+  { label: "Deezer", href: "https://www.deezer.com/fr/show/57503" },
+  { label: "SoundCloud", href: "https://soundcloud.com/lecosycorner" },
+];
+
 export function StatsHeader({
   numberOfEpisodes,
   numberOfSongs,
@@ -17,9 +30,35 @@ export function StatsHeader({
         <h1 className="text-7xl font-black tracking-tighter text-white uppercase md:text-8xl">
           COSY SONGS
         </h1>
-        <p className="mt-4 text-lg font-medium tracking-wide text-white/70 uppercase">
-          {numberOfEpisodes} episodes &middot; {numberOfSongs} songs
+        <p className="mt-3 max-w-lg text-base leading-relaxed text-white/80">
+          Toutes les musiques citées dans le podcast{" "}
+          <a
+            href="https://soundcloud.com/lecosycorner"
+            rel="noopener noreferrer"
+            className="border-b border-white/50 font-semibold text-white transition hover:border-white"
+          >
+            Cosy Corner
+          </a>
+          , rassemblées au même endroit. Parcourez les épisodes et retrouvez
+          chaque morceau.
         </p>
+        <p className="mt-4 text-lg font-medium tracking-wide text-white/70 uppercase">
+          {numberOfEpisodes} épisodes &middot; {numberOfSongs} morceaux
+        </p>
+
+        <nav className="mt-6 flex flex-wrap gap-3">
+          {PODCAST_LINKS.map(({ label, href }) => (
+            <a
+              key={label}
+              href={href}
+              rel="noopener noreferrer"
+              className="border-2 border-white/60 px-4 py-2 text-xs font-bold tracking-wide text-white uppercase transition hover:border-white hover:bg-white hover:text-cosy-red"
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+
         {devMode && (
           <Link
             href="/playlist-builder"
@@ -28,6 +67,25 @@ export function StatsHeader({
             Build a playlist
           </Link>
         )}
+
+        <p className="mt-8 text-xs text-white/50">
+          Fait par{" "}
+          <a
+            href="https://release-dev.com"
+            rel="noopener noreferrer"
+            className="border-b border-white/30 transition hover:border-white/60 hover:text-white/70"
+          >
+            Dimitri Bourreau
+          </a>{" "}
+          &middot;{" "}
+          <a
+            href="https://github.com/dimitri-bourreau/cosy-songs"
+            rel="noopener noreferrer"
+            className="border-b border-white/30 transition hover:border-white/60 hover:text-white/70"
+          >
+            Code source
+          </a>
+        </p>
       </div>
     </header>
   );
