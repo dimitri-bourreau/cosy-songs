@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useReducer, ReactNode } from "react";
+import { createContext, useContext, useReducer, useEffect, ReactNode } from "react";
 import { Song } from "@/features/songs/types";
 
 type Mode = "auto" | "manual";
@@ -22,12 +22,41 @@ type Action =
   | { type: "TOGGLE_DEDUP" }
   | { type: "CLEAR" };
 
+const STORAGE_KEY = "playlist-builder-state";
+
 const initialState: PlaylistBuilderState = {
   mode: "auto",
   selectedEpisodeLinks: new Set(),
   pickedSongs: [],
   deduplicate: true,
 };
+
+function loadState(): PlaylistBuilderState {
+  if (typeof window === "undefined") return initialState;
+  try {
+    const raw = sessionStorage.getItem(STORAGE_KEY);
+    if (!raw) return initialState;
+    const parsed = JSON.parse(raw);
+    return {
+      ...parsed,
+      selectedEpisodeLinks: new Set(parsed.selectedEpisodeLinks),
+    };
+  } catch {
+    return initialState;
+  }
+}
+
+function saveState(state: PlaylistBuilderState) {
+  try {
+    sessionStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        ...state,
+        selectedEpisodeLinks: [...state.selectedEpisodeLinks],
+      }),
+    );
+  } catch { /* quota exceeded — ignore */ }
+}
 
 function reducer(
   state: PlaylistBuilderState,
@@ -68,7 +97,12 @@ const PlaylistBuilderContext = createContext<{
 } | null>(null);
 
 export function PlaylistBuilderProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState, loadState);
+
+  useEffect(() => {
+    saveState(state);
+  }, [state]);
+
   return (
     <PlaylistBuilderContext.Provider value={{ state, dispatch }}>
       {children}
