@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useReducer, useEffect, ReactNode } from "react";
+import { createContext, useContext, useReducer, useEffect, useState, ReactNode } from "react";
 import { Song } from "@/features/songs/types";
 
 type Mode = "auto" | "manual";
@@ -20,7 +20,8 @@ type Action =
   | { type: "ADD_SONG"; payload: Song }
   | { type: "REMOVE_SONG"; payload: number }
   | { type: "TOGGLE_DEDUP" }
-  | { type: "CLEAR" };
+  | { type: "CLEAR" }
+  | { type: "RESTORE"; payload: PlaylistBuilderState };
 
 const STORAGE_KEY = "playlist-builder-state";
 
@@ -86,6 +87,8 @@ function reducer(
       return { ...state, deduplicate: !state.deduplicate };
     case "CLEAR":
       return { ...initialState };
+    case "RESTORE":
+      return action.payload;
     default:
       return state;
   }
@@ -97,11 +100,20 @@ const PlaylistBuilderContext = createContext<{
 } | null>(null);
 
 export function PlaylistBuilderProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(reducer, initialState, loadState);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    saveState(state);
-  }, [state]);
+    const saved = loadState();
+    if (saved !== initialState) {
+      dispatch({ type: "RESTORE", payload: saved });
+    }
+    setHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (hydrated) saveState(state);
+  }, [state, hydrated]);
 
   return (
     <PlaylistBuilderContext.Provider value={{ state, dispatch }}>

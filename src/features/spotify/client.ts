@@ -29,7 +29,7 @@ export async function searchSpotifyTrack(
   const data = await res.json();
 
   if (!res.ok) {
-    console.error("[Spotify] Search failed:", data.error?.message);
+    console.error(`[Spotify] Search failed (${res.status}):`, data.error?.message, "query:", query);
     return null;
   }
 

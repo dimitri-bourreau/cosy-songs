@@ -28,15 +28,23 @@ export async function POST(request: NextRequest) {
     console.log(`[Spotify] Playlist created: ${playlist.id}`);
 
     const uris: string[] = [];
+    let searched = 0;
     for (const song of body.songs) {
       const uri = await searchSpotifyTrack(
         `${song.artist} ${song.title}`,
         accessToken,
       );
       if (uri) uris.push(uri);
+      searched++;
+      if (searched % 50 === 0) {
+        console.log(`[Spotify] Searched ${searched}/${body.songs.length}, found ${uris.length} URIs`);
+      }
     }
+    console.log(`[Spotify] Search complete: ${uris.length}/${body.songs.length} found`);
 
-    await addTracksToSpotifyPlaylist(playlist.id, uris, accessToken);
+    if (uris.length > 0) {
+      await addTracksToSpotifyPlaylist(playlist.id, uris, accessToken);
+    }
     console.log(`[Spotify] Done: ${uris.length}/${body.songs.length} songs added`);
 
     return NextResponse.json({
